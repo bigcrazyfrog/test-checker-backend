@@ -1,0 +1,70 @@
+django
+
+# Shortcuts for configuring settings using env variables and .env files
+# https://django-environ.readthedocs.io/en/latest/
+django-environ
+
+# Different useful Django utils
+# https://django-extensions.readthedocs.io/en/latest/
+django-extensions
+
+# Filter querysets dynamically
+# https://django-filter.readthedocs.io/en/stable/
+django-filter
+
+# Building APIs with Django
+# https://django-ninja.dev/
+django-ninja
+
+# Gitlint is a git commit message linter written in python: it checks your commit messages for style.
+# https://jorisroovers.com/gitlint/
+gitlint
+
+# https://pypi.org/project/isort/
+isort
+
+# Fast creating of model instances. May be used in tests
+# https://factoryboy.readthedocs.io/en/stable/
+factory-boy
+
+# https://flake8.pycqa.org/en/latest/
+flake8
+
+# A plugin for Flake8 finding likely bugs and design problems in your program.
+# https://github.com/PyCQA/flake8-bugbear
+flake8-bugbear
+
+# Extension to enforce better comma placement.
+# https://github.com/PyCQA/flake8-commas
+flake8-commas
+
+# Much stricter linter for docstrings. Check periods, empty lines, etc.
+flake8-docstrings
+
+# Flake8 plugin for linting quotes style
+# https://github.com/zheller/flake8-quotes
+flake8-quotes
+
+# A flake8 plugin that warn about backslashes usage
+# https://github.com/wemake-services/flake8-broken-line
+flake8-broken-line
+
+# flake8 plugin to validate type annotations accoring to modern practices.
+# https://github.com/plinss/flake8-modern-annotations
+flake8-modern-annotations
+
+# flake8 config from pyproject.toml
+# https://pypi.org/project/Flake8-pyproject/
+Flake8-pyproject
+
+# Static Typing for Python
+# https://github.com/python/mypy
+mypy
+
+# Database abstraction layer
+# https://pypi.org/project/psycopg-binary/
+psycopg[binary]
+
+# Encode and decode JSON Web Tokens (RFC 7519) 
+# https://pypi.org/project/PyJWT/
+PyJWT

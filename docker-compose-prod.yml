@@ -1,0 +1,58 @@
+version: "3.9"
+
+x-logging: &x-logging
+  driver: journald
+  options:
+    tag: "{{.Name}}"
+
+services:
+  postgres:
+    image: postgres:13
+    env_file:
+      - .env
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data/
+      
+    logging: *x-logging
+    networks:
+      - iris
+
+  app:
+    container_name: project_name__app
+    image: $DOCKER_NAMESPACE/$IMAGE_NAME:main
+    command: bash docker-entrypoint.sh
+    volumes:
+      - "static_volume:/static/"
+      - "media_volume:/media/"
+
+    logging: *x-logging
+    depends_on:
+      - postgres
+    networks:
+      - iris
+    
+  nginx:
+    container_name: project_name__nginx
+    build: ./nginx
+
+    volumes:
+      - "static_volume:/static/"
+      - "nginx_log_volume:/var/log/nginx/"
+      - "media_volume:/media/"
+
+    ports: ["$PORT:80"]
+
+    logging: *x-logging
+    restart: always
+    networks:
+      - iris
+
+volumes:
+  postgres_data:
+  nginx_log_volume:
+  static_volume:
+  media_volume:
+
+networks:
+  iris:
+    driver: bridge

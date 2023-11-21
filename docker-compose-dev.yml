@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:13
+    env_file:
+      - .env
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data/
+    networks:
+      - iris
+
+  app:
+    container_name: app
+    build: .
+    ports:
+      - "8000:8000"
+    command: bash docker-entrypoint.sh
+    depends_on:
+      - postgres
+    networks:
+      - iris
+
+volumes:
+  postgres_data:
+
+networks:
+  iris:
+    driver: bridge
