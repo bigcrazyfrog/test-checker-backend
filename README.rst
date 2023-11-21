@@ -1,15 +1,18 @@
 ====================
 Test Checker Backend
-===================
+====================
 
-Simply hiding a useless data from query results.
+.. image:: https://github.com/bigcrazyfrog/test-checker-backend/actions/workflows/checks.yaml/badge.svg
+   :target: https://github.com/bigcrazyfrog/test-checker-backend/actions/
+.. image:: https://github.com/bigcrazyfrog/test-checker-backend/actions/workflows/deploy.yaml/badge.svg
+   :target: https://github.com/bigcrazyfrog/test-checker-backend/actions/
 
 Setup localy
 ------------
 
 .. code-block:: bash
 
-    git clone https://github.com/bigcrazyfrog/bank-service.git
+    git clone https://github.com/bigcrazyfrog/test-checker-backend.git
 
 Create ``.env`` file from ``.env.example``.
 
