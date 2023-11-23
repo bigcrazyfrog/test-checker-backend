@@ -3,8 +3,6 @@ name: CI/CD
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   push_to_registry:
@@ -56,5 +54,5 @@ jobs:
           echo "${{ secrets.ENV_FILE }}" > .env
       - name: docker compose
         run: |
-          docker-compose -f docker-compose-prod.yml down --remove-orphans
-          docker-compose -f docker-compose-prod.yml up -d
+          docker-compose -f docker-compose-prod.yml up -d --build
+          docker system prune -f

@@ -14,6 +14,7 @@ services:
       - ./postgres_data:/var/lib/postgresql/data/
       
     logging: *x-logging
+    restart: always
     networks:
       - iris
 
@@ -49,7 +50,6 @@ services:
 
   nginx-exporter:
     container_name: project_name__nginx-exporter
-    # image: ${IMAGE_NGINX_EXPORTER}
     build: ./nginx-exporter
 
     volumes: ["nginx_log_volume:/var/log/nginx/"]
