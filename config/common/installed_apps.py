@@ -11,6 +11,7 @@ INSTALLED_APPS = [
 LOCAL_APPS = [
     "apps.users",
     "apps.auth_jwt",
+    "apps.groups",
 ]
 
 INSTALLED_APPS += LOCAL_APPS
