@@ -5,6 +5,7 @@ from ninja import NinjaAPI
 from apps.auth_jwt.api.routers import add_auth_router
 from apps.auth_jwt.middlewares import HTTPJWTAuth
 from apps.groups.api.routers import add_student_groups_router
+from apps.quizzes.api.routers import add_quizzes_router
 from apps.students.api.routers import add_students_router
 from apps.users.api.routers import add_users_router
 
@@ -23,6 +24,7 @@ def get_api() -> NinjaAPI:
     add_users_router(api=api)
     add_student_groups_router(api=api)
     add_students_router(api=api)
+    add_quizzes_router(api=api)
 
     return api
 

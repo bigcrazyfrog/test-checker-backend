@@ -13,6 +13,7 @@ LOCAL_APPS = [
     "apps.auth_jwt",
     "apps.groups",
     "apps.students",
+    "apps.quizzes",
 ]
 
 INSTALLED_APPS += LOCAL_APPS
