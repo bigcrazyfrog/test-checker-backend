@@ -9,8 +9,8 @@ class TestUserPermissions(TestCase):
 
     def test_without_auth(self) -> None:
         """Test request without auth."""
-        response = self.client.get("/api/v1/profile/me")
+        response = self.client.get("/api/v1/profile/")
         self.assertEqual(response.status_code, 401)
 
-        response = self.client.put("/api/v1/profile/settings")
+        response = self.client.put("/api/v1/profile/")
         self.assertEqual(response.status_code, 401)

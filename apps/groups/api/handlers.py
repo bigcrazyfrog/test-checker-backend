@@ -1,7 +1,7 @@
 from django.http import HttpRequest
 
 from apps.core.api.schemas import Message
-from apps.groups.api.schemas import GroupAdd, GroupOut, GroupRemove
+from apps.groups.api.schemas import GroupAdd, GroupOut
 
 from ..models import StudentGroup
 
@@ -27,7 +27,8 @@ def add(
 
 
 def get(
-    request: HttpRequest, id: str,
+    request: HttpRequest,
+    id: str,
 ) -> tuple[int, Message | GroupOut]:
     """Get existing group."""
     group = StudentGroup.objects.filter(teacher=request.user, id=id).first()
@@ -39,12 +40,13 @@ def get(
 
 def update(
     request: HttpRequest,
-    group_data: GroupOut,
+    id: str,
+    group_data: GroupAdd,
 ) -> tuple[int, Message | GroupOut]:
     """Update group fields."""
     group = StudentGroup.objects.filter(
         teacher=request.user,
-        id=group_data.id,
+        id=id,
     ).first()
 
     if group is None:
@@ -57,12 +59,12 @@ def update(
 
 def remove(
     request: HttpRequest,
-    group_data: GroupRemove,
+    id: str,
 ) -> tuple[int, Message | GroupOut]:
     """Remove group from database."""
     group = StudentGroup.objects.filter(
         teacher=request.user,
-        id=group_data.id,
+        id=id,
     ).first()
 
     if group is None:

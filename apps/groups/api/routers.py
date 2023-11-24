@@ -17,24 +17,10 @@ def get_student_groups_router() -> Router:
     )
 
     router.add_api_operation(
-        "/add",
+        "/",
         ["POST"],
         group_handlers.add,
         response={200: GroupOut, 400: Message},
-    )
-
-    router.add_api_operation(
-        "/update",
-        ["POST"],
-        group_handlers.update,
-        response={200: GroupOut, 400: Message, 404: Message},
-    )
-
-    router.add_api_operation(
-        "/remove",
-        ["DELETE"],
-        group_handlers.remove,
-        response={200: Message, 400: Message, 404: Message},
     )
 
     router.add_api_operation(
@@ -42,6 +28,20 @@ def get_student_groups_router() -> Router:
         ["GET"],
         group_handlers.get,
         response={200: GroupOut, 400: Message, 404: Message},
+    )
+
+    router.add_api_operation(
+        "/{id}",
+        ["PUT"],
+        group_handlers.update,
+        response={200: GroupOut, 400: Message, 404: Message},
+    )
+
+    router.add_api_operation(
+        "/{id}",
+        ["DELETE"],
+        group_handlers.remove,
+        response={200: Message, 400: Message, 404: Message},
     )
 
     return router
