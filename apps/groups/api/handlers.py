@@ -28,10 +28,13 @@ def add(
 
 def get(
     request: HttpRequest,
-    id: str,
+    group_id: str,
 ) -> tuple[int, Message | GroupOut]:
     """Get existing group."""
-    group = StudentGroup.objects.filter(teacher=request.user, id=id).first()
+    group = StudentGroup.objects.filter(
+        teacher=request.user,
+        id=group_id,
+    ).first()
     if group is None:
         return 404, {"message": "Group not found"}
 
@@ -40,13 +43,13 @@ def get(
 
 def update(
     request: HttpRequest,
-    id: str,
+    group_id: str,
     group_data: GroupAdd,
 ) -> tuple[int, Message | GroupOut]:
     """Update group fields."""
     group = StudentGroup.objects.filter(
         teacher=request.user,
-        id=id,
+        id=group_id,
     ).first()
 
     if group is None:
@@ -59,12 +62,12 @@ def update(
 
 def remove(
     request: HttpRequest,
-    id: str,
+    group_id: str,
 ) -> tuple[int, Message | GroupOut]:
     """Remove group from database."""
     group = StudentGroup.objects.filter(
         teacher=request.user,
-        id=id,
+        id=group_id,
     ).first()
 
     if group is None:
