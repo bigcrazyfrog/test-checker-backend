@@ -10,14 +10,14 @@ def get_users_router() -> Router:
     router = Router(tags=["users"])
 
     router.add_api_operation(
-        "/me",
+        "/",
         ["GET"],
         user_handlers.me,
         response={200: UserOut, 400: Message},
     )
 
     router.add_api_operation(
-        "/settings",
+        "/",
         ["PUT"],
         user_handlers.settings,
         response={200: Message, 400: Message},
