@@ -19,8 +19,8 @@ def get_users_router() -> Router:
     router.add_api_operation(
         "/",
         ["PUT"],
-        user_handlers.settings,
-        response={200: Message, 400: Message},
+        user_handlers.update,
+        response={200: UserOut, 400: Message},
     )
 
     return router

@@ -16,10 +16,10 @@ def me(request: HttpRequest) -> tuple[int, Message | UserOut]:
     return 200, response
 
 
-def settings(
+def update(
     request: HttpRequest,
     user_data: UserUpdate,
-) -> tuple[int, Message]:
+) -> tuple[int, Message | UserOut]:
     """Update user fields."""
     if user_data.first_name is not None:
         request.user.first_name = user_data.first_name
@@ -27,4 +27,4 @@ def settings(
         request.user.last_name = user_data.last_name
 
     request.user.save()
-    return 200, {"message": "Succesfull update"}
+    return 200, request.user
