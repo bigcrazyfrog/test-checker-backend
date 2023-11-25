@@ -20,8 +20,8 @@ class TestNewUser(TestCase):
             "password": fake.password(),
         }
 
-    def test_without_auth(self) -> None:
-        """Test request without auth."""
+    def test_add_new_user(self) -> None:
+        """Test API request add new user."""
         response = self.client.post(
             "/api/v1/auth/register",
             json.dumps(self.get_data()),
