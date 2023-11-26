@@ -20,7 +20,7 @@ def get_student_groups_router() -> Router:
         "/",
         ["POST"],
         group_handlers.add,
-        response={200: GroupOut, 400: Message},
+        response={201: GroupOut, 400: Message},
     )
 
     router.add_api_operation(
@@ -40,7 +40,7 @@ def get_student_groups_router() -> Router:
     router.add_api_operation(
         "/{group_id}",
         ["DELETE"],
-        group_handlers.remove,
+        group_handlers.delete,
         response={200: Message, 400: Message, 404: Message},
     )
 

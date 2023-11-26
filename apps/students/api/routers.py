@@ -20,7 +20,7 @@ def get_students_router() -> Router:
         "/",
         ["POST"],
         student_handlers.add,
-        response={200: StudentOut, 400: Message},
+        response={201: StudentOut, 400: Message},
     )
 
     router.add_api_operation(

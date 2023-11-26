@@ -28,7 +28,7 @@ class TestUserProfile(TestCase):
             content_type="application/json",
         )
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 201)
         self.assertEqual(response.json()["name"], name)
 
     def test_get_group_info(self) -> None:

@@ -1,6 +1,9 @@
+from django.forms import ValidationError
 from django.http import HttpRequest, HttpResponse
 
 from ninja import NinjaAPI
+
+from config.settings import DEBUG
 
 from apps.attempts.api.routers import add_attempts_router
 from apps.auth_jwt.api.routers import add_auth_router
@@ -18,6 +21,7 @@ def get_api() -> NinjaAPI:
     api = NinjaAPI(
         title="TEST.CHECKER.BACKEND",
         version="1.0.0",
+        description="The best API",
         auth=auth,
     )
 
@@ -35,11 +39,21 @@ def get_api() -> NinjaAPI:
 ninja_api = get_api()
 
 
+@ninja_api.exception_handler(ValidationError)
+def validation_error_handler(request: HttpRequest, exc) -> HttpResponse:
+    """Handler for unexpected `ValidationError`."""
+    return ninja_api.create_response(
+        request,
+        {"message": str(exc) if DEBUG else "Data is not valid"},
+        status=422,
+    )
+
+
 @ninja_api.exception_handler(Exception)
 def exception_handler(request: HttpRequest, exc) -> HttpResponse:
     """Handler for unexpected error."""
     return ninja_api.create_response(
         request,
-        {"message": str(exc)},
-        status=400,
+        {"message": str(exc) if DEBUG else "Unexpected error"},
+        status=500,
     )

@@ -24,7 +24,7 @@ def add(
         content=quiz_data.content,
         author=request.user,
     )
-    return 200, quiz
+    return 201, quiz
 
 
 def get(

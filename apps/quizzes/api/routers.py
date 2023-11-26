@@ -20,7 +20,7 @@ def get_quizzes_router() -> Router:
         "/",
         ["POST"],
         quiz_handlers.add,
-        response={200: QuizOut, 400: Message},
+        response={201: QuizOut, 400: Message},
     )
 
     router.add_api_operation(

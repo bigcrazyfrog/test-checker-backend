@@ -40,6 +40,6 @@ class TestQuiz(TestCase):
         )
 
         json_data = response.json()
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 201)
         for key, value in data.items():
             self.assertEqual(json_data[key], value)
