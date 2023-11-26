@@ -2,6 +2,7 @@ from django.http import HttpRequest, HttpResponse
 
 from ninja import NinjaAPI
 
+from apps.attempts.api.routers import add_attempts_router
 from apps.auth_jwt.api.routers import add_auth_router
 from apps.auth_jwt.middlewares import HTTPJWTAuth
 from apps.groups.api.routers import add_student_groups_router
@@ -25,6 +26,7 @@ def get_api() -> NinjaAPI:
     add_student_groups_router(api=api)
     add_students_router(api=api)
     add_quizzes_router(api=api)
+    add_attempts_router(api=api)
 
     return api
 

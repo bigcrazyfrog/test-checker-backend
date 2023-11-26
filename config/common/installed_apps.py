@@ -14,6 +14,7 @@ LOCAL_APPS = [
     "apps.groups",
     "apps.students",
     "apps.quizzes",
+    "apps.attempts",
 ]
 
 INSTALLED_APPS += LOCAL_APPS
