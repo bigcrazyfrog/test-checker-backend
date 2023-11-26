@@ -35,7 +35,7 @@ def add(
         father_name=student_data.father_name,
         group=group,
     )
-    return 200, student
+    return 201, student
 
 
 def get(

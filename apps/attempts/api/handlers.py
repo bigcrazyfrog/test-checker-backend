@@ -54,7 +54,7 @@ def add(
         result=attemps_data.result,
         answers=attemps_data.answers,
     )
-    return 200, attempt
+    return 201, attempt
 
 
 def get(

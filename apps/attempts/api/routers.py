@@ -20,7 +20,7 @@ def get_attempts_router() -> Router:
         "/",
         ["POST"],
         attempt_handlers.add,
-        response={200: AttemptOut, 400: Message, 404: Message},
+        response={201: AttemptOut, 400: Message, 404: Message},
     )
 
     router.add_api_operation(

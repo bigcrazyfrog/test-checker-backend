@@ -14,7 +14,7 @@ class AuthClient(Client):
 
     def __init__(
         self,
-        user: User = None,
+        user: User | None = None,
         enforce_csrf_checks=False,
         raise_request_exception=True,
         *,

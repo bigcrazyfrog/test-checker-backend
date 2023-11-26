@@ -23,7 +23,7 @@ def add(
         name=group_data.name,
         teacher=request.user,
     )
-    return 200, groups
+    return 201, groups
 
 
 def get(
@@ -60,7 +60,7 @@ def update(
     return 200, group
 
 
-def remove(
+def delete(
     request: HttpRequest,
     group_id: str,
 ) -> tuple[int, Message | GroupOut]:
